@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_144744) do
   end
 
   create_table "attendances", force: :cascade do |t|
-    t.boolean "is_attended"
+    t.boolean "is_attended", default: false
     t.bigint "appoitment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

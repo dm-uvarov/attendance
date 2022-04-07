@@ -1,0 +1,2 @@
+class DiscliplinesController < ApplicationController
+end
