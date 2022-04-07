@@ -17,9 +17,9 @@ Student.create(name:"Phil G",email:"Phil G@gmail.com",pic:"" );
 Student.create(name:"Mok c",email:"Mok c@gmail.com",pic:"" );
 Student.create(name:"Vasya p",email:"Vasya@gmail.com",pic:"" );
 
-User.create(username: "aplpha", password_digest:"123", name:"John Doe", email:"john@example.com", pic:"", is_instructor: true); 
-User.create(username: "omega", password_digest:"123", name:"Jane Doe", email:"jane@example.com", pic:"", is_instructor: true);
-User.create(username: "delta", password_digest:"123", name:"Don Doe", email:"Don@example.com", pic:"", is_instructor: true);
+User.create(username: "alpha", password:"123", name:"John Doe", email:"john@example.com", pic:"", is_instructor: true); 
+User.create(username: "omega", password:"123", name:"Jane Doe", email:"jane@example.com", pic:"", is_instructor: true);
+User.create(username: "delta", password:"123", name:"Don Doe", email:"Don@example.com", pic:"", is_instructor: true);
 
 Discipline.create(name: "Math", pic:"", user_id:1);
 Discipline.create(name: "Art", pic:"", user_id:2);

@@ -5,10 +5,14 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
+
+#   !!!!!!!! 
+# Please don't forget to change these settings before deploying your app to the internet. Please
+#!!!!!!!!!!!!!!
 # Rails.application.config.middleware.insert_before 0, Rack::Cors do
 #   allow do
-#     origins 'example.com'
-#
+#     origins '*'
+
 #     resource '*',
 #       headers: :any,
 #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
