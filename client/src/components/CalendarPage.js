@@ -1,7 +1,7 @@
 import React from "react";
 
-function CalendarPage () {
+export default function CalendarPage () {
 
-    <h2>Welcome!</h2>
+    <h2>calendar here</h2>
 
 }

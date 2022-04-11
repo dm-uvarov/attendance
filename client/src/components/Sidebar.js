@@ -7,7 +7,6 @@ import { v4 as uuid } from "uuid";
 function SideNav(){
 return (
     <div className="sidebar">
-        <Link></Link>
         <Link>disciplines</Link>
         <Link>schedule</Link>
         <Link>show up</Link>
