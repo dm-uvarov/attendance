@@ -1,6 +1,6 @@
 class DiscliplinesController < ApplicationController
     def index 
-        render json: Student.all, status: :ok
+        render json: Discipline.all, status: :ok
     end
 
     def show
