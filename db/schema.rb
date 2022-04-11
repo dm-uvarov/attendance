@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_04_11_164331) do
 
   create_table "attendances", force: :cascade do |t|
     t.bigint "appointment_id", null: false
+    t.boolean "is_attended", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["appointment_id"], name: "index_attendances_on_appointment_id"
@@ -44,8 +45,8 @@ ActiveRecord::Schema.define(version: 2022_04_11_164331) do
   create_table "slots", force: :cascade do |t|
     t.date "date"
     t.time "s_time"
-    t.string "e_time"
-    t.boolean "is_marked"
+    t.time "e_time"
+    t.boolean "is_marked", default: false
     t.bigint "discipline_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
