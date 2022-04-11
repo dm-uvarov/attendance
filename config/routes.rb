@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :attendances
+  resources :appointments
+  resources :slots
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   resources :disciplines, only: [:index, :show,:create,:update,:destroy]

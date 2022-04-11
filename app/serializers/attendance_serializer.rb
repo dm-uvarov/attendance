@@ -1,3 +1,4 @@
 class AttendanceSerializer < ActiveModel::Serializer
-  attributes :id,:is_attended,:appoitment_id
+  attributes :id
+  has_one :appointment
 end

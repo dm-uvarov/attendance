@@ -10,28 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_07_144744) do
+ActiveRecord::Schema.define(version: 2022_04_11_164331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "appoitments", force: :cascade do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.bigint "discipline_id", null: false
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "slot_id", null: false
     t.bigint "student_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["discipline_id"], name: "index_appoitments_on_discipline_id"
-    t.index ["student_id"], name: "index_appoitments_on_student_id"
+    t.index ["slot_id"], name: "index_appointments_on_slot_id"
+    t.index ["student_id"], name: "index_appointments_on_student_id"
   end
 
   create_table "attendances", force: :cascade do |t|
-    t.boolean "is_attended", default: false
-    t.bigint "appoitment_id", null: false
+    t.bigint "appointment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["appoitment_id"], name: "index_attendances_on_appoitment_id"
+    t.index ["appointment_id"], name: "index_attendances_on_appointment_id"
   end
 
   create_table "disciplines", force: :cascade do |t|
@@ -42,6 +39,17 @@ ActiveRecord::Schema.define(version: 2022_04_07_144744) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_disciplines_on_user_id"
+  end
+
+  create_table "slots", force: :cascade do |t|
+    t.date "date"
+    t.time "s_time"
+    t.string "e_time"
+    t.boolean "is_marked"
+    t.bigint "discipline_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["discipline_id"], name: "index_slots_on_discipline_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -63,8 +71,9 @@ ActiveRecord::Schema.define(version: 2022_04_07_144744) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "appoitments", "disciplines"
-  add_foreign_key "appoitments", "students"
-  add_foreign_key "attendances", "appoitments"
+  add_foreign_key "appointments", "slots"
+  add_foreign_key "appointments", "students"
+  add_foreign_key "attendances", "appointments"
   add_foreign_key "disciplines", "users"
+  add_foreign_key "slots", "disciplines"
 end
