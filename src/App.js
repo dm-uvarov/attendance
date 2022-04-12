@@ -22,8 +22,6 @@ function App() {
         <Route path="/" element ={<StartPage />} />
 
         <Route path="/end" element ={<EndPage />} />
-
-
       </Routes>
     </div>
   </BrowserRouter>

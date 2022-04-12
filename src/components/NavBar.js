@@ -4,11 +4,12 @@ import { NavLink } from "react-router-dom";
 export default function NavBar() {
   return (
     <div className="navbar">
-      <NavLink exact to="/">
-        <label >start page</label> 
+      <NavLink to="/">
+            start page
       </NavLink>
-      <NavLink exact to="/end">
-        <label >end page</label> 
+      <br></br>
+      <NavLink to="/end">
+            end page
       </NavLink>
     </div>
   );
