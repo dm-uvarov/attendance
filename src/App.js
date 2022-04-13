@@ -10,23 +10,36 @@ import Signup from './components/Signup'
 import NavBar from './components/NavBar'
 import DisciplinesListPage from './components/DisciplinesListPage'
 import AttendancePage from './components/AttendancePage'
-
+import { connect,useDispatch } from "react-redux";
+import { fetchStudents } from './actions/actions'
 
 import {BrowserRouter,
         Routes,
        Route,
        useNavigate } from 'react-router-dom';
 
-function App() {
+const mapStateToProps = (state) => {
+        return {
+          students: state.students
+        };
+};
+
+const mapDispatchToProps = (dispatch) => {
+        return {
+          fetchStudents: (students) => dispatch(fetchStudents(students))
+        };
+};
+
+function App(props) {
 
   // const navigate = useNavigate();
   const [user,setUser] = useState(null)
 
-  useEffect(() => {
-    fetch('/logout',{method:"DELETE"}).then().then(console.log)
-    setUser(null)
-    // navigate('/login')
-  }, [])
+  // useEffect(() => {
+  //   fetch('/logout',{method:"DELETE"}).then().then(console.log)
+  //   setUser(null)
+  //   // navigate('/login')
+  // }, [])
 
   // if (!user) {
   //   return  ( 
@@ -36,6 +49,16 @@ function App() {
   //       </Route>
   //     </Routes> 
   // )}
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetch(`/students`)
+      .then((r) => r.json())
+      .then((students) => {
+        dispatch(fetchStudents(students));
+      });
+  }, []);
 
   return (
   
@@ -68,4 +91,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
