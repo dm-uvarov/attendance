@@ -5,11 +5,15 @@ export default function NavBar() {
   return (
     <div className="navbar">
       <NavLink to="/">
-            start page
+            disciplines
       </NavLink>
       <br></br>
-      <NavLink to="/end">
-            end page
+      <NavLink to="/slots">
+            all slots
+      </NavLink>
+      <br></br>
+      <NavLink to="/logout">
+            logout
       </NavLink>
     </div>
   );

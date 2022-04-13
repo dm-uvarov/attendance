@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function EndPage(){
+export default function StartPage(){
 
     return(
         <div>-= start Page =-</div>
