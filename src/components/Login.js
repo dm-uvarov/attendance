@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import React,{useState ,useEffect } from 'react'
 
 
 
-function Login({setUser,setIsLoggedIn}){
+function Login({setUser}){
 
 
     const [username,setUsername] = useState("")
@@ -21,11 +21,12 @@ function Login({setUser,setIsLoggedIn}){
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(userLogin)
         })
-        // Problem with error handling
+        
         .then(r=>{
             if(r.ok){
                 r.json().then(setUser)
-                setIsLoggedIn(true)
+                // setIsLoggedIn(true)
+                // navigate("/");
             }else{
                 r.json().then( (d) => {
                     console.log(userLogin)

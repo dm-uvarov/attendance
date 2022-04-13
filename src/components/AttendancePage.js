@@ -1,5 +1,6 @@
 import React from "react";
 import Report from "./Report"
+import StudentList from "./StudentList"
 
 export default function AttendancePage(){
 

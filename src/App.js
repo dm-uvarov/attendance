@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import React,{useState ,useEffect } from 'react'
+
 import StartPage from './components/StartPage'
 import Logout from './components/Logout'
 import Login from './components/Login'
@@ -18,20 +20,34 @@ import {BrowserRouter,
 function App() {
 
   // const navigate = useNavigate();
+  const [user,setUser] = useState(null)
 
+  useEffect(() => {
+    fetch('/logout',{method:"DELETE"}).then().then(console.log)
+    setUser(null)
+    // navigate('/login')
+  }, [])
 
+  // if (!user) {
+  //   return  ( 
+  //     <Routes>
+  //       <Route path="/">
+  //         <Login setUser={setUser} />
+  //       </Route>
+  //     </Routes> 
+  // )}
 
   return (
-  <BrowserRouter >
+  
     <div className="App">
       <NavBar />
 
       <Routes>
-        <Route path="/login" element ={<Login />} />
+        <Route path="/login" element ={<Login  setUser={setUser}/>} />
 
         <Route path="/signup" element ={<Signup />} />
 
-        <Route path="/logout" element ={<Logout />} />
+        <Route path="/logout" element ={<Logout setUser={setUser} />} />
 
         <Route path="/" element ={<DisciplinesListPage />} />
         {/*slot page for chosen discipline     */}
@@ -48,7 +64,7 @@ function App() {
       
       </Routes>
     </div>
-  </BrowserRouter>
+
   );
 }
 
