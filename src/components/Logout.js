@@ -1,16 +1,18 @@
 import React,{useState ,useEffect } from 'react'
 
 
-export default function Logout({setUser}) {
+export default function Logout({setUser,setIsLoggedIn}) {
 
-    const handleLogout = () =>{
-        fetch('/logout',{method:"DELETE"}).then().then(console.log)
-        setUser(null)
+    const handleLogout = (e) =>{
+      e.preventDefault();
+        fetch('/logout',{method:"DELETE"}).then(r=>r.json()).then(console.log)
+        setUser([])
+        setIsLoggedIn(false)
     }
 
 
 
   return (
-        <label onClick={handleLogout}>Logout</label>
+        <label onClick={ handleLogout }>Logout</label>
   )
 }

@@ -2,7 +2,7 @@ import React,{useState ,useEffect } from 'react'
 
 
 
-function Login({setUser}){
+function Login({setUser, setIsLoggedIn}){
 
 
     const [username,setUsername] = useState("")
@@ -25,11 +25,11 @@ function Login({setUser}){
         .then(r=>{
             if(r.ok){
                 r.json().then(setUser)
-                // setIsLoggedIn(true)
+                setIsLoggedIn(true)
                 // navigate("/");
             }else{
                 r.json().then( (d) => {
-                    console.log(userLogin)
+                    console.log("userlogin",userLogin)
                     alert("Invalid Username or Password")})
             }
         })

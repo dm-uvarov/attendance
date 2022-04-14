@@ -40,26 +40,36 @@ const mapDispatchToProps = (dispatch) => {
 
 function App(props) {
 
-  // const navigate = useNavigate();
-  const [user,setUser] = useState(null)
-
-  // useEffect(() => {
-  //   fetch('/logout',{method:"DELETE"}).then().then(console.log)
-  //   setUser(null)
-  //   // navigate('/login')
-  // }, [])
-
-  // if (!user) {
-  //   return  ( 
-  //     <Routes>
-  //       <Route path="/">
-  //         <Login setUser={setUser} />
-  //       </Route>
-  //     </Routes> 
-  // )}
-
+  const [user,setUser] = useState([])
+  const [isloggedIn, setIsLoggedIn] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    fetch('/me')
+      .then((r) => {
+        if (r.ok){
+          r.json()
+            .then((user) =>{
+              setIsLoggedIn(true);
+              setUser(user)
+            })
+        }} )
+      },[]);
+
+  console.log("user",user)
+
+  // const handleLogout = () => {
+  //   fetch("/logout", {
+  //     method: "DELETE",
+  //   });
+  //     setUser([]);
+  //     setIsLoggedIn(false);
+  //     // navigate("/");
+  // };
+
+
+/*
   useEffect(() => {
     fetch(`/students`)
       .then((r) => r.json())
@@ -97,36 +107,30 @@ function App(props) {
         dispatch(fetchAppointments(appointments));
       });
   }, []);
+*/
+
+
 
   return (
-  
+   
     <div className="App">
-      <NavBar />
+       
+      <div> 
+        {(isloggedIn ) ? (<NavBar setUser={setUser} setIsLoggedIn={setIsLoggedIn} />):(
+          <Login setUser= {setUser} setIsLoggedIn = {setIsLoggedIn} />
+        )}
+ 
+   
+       </div>
 
-      <Routes>
-        <Route path="/login" element ={<Login  setUser={setUser}/>} />
-
-        <Route path="/signup" element ={<Signup />} />
-
-        <Route path="/logout" element ={<Logout setUser={setUser} />} />
-
-        <Route path="/" element ={<DisciplinesListPage />} />
-        {/*slot page for chosen discipline     */}
-        <Route path="/:id/slots" element ={<SlotPage />} />
-        {/*slot page for all disciplines    */}
-        <Route path="/slots" element ={<SlotPage />} />
+       {/* <NavBar setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
+       <Login setUser= {setUser} setIsLoggedIn = {setIsLoggedIn} /> */}
 
 
-        {/*attendace page for chosen discipline     */}
-        <Route path="/:id/slots/:id" element ={<SlotPage />} />
-        {/*attendance page for all disciplines    */}
-        <Route path="/slots/:id" element ={<AttendancePage />} />
-
-      
-      </Routes>
     </div>
 
   );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+

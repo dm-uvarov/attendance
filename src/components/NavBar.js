@@ -1,19 +1,25 @@
 import React from "react";
+import Logout from "./Logout"
 import { NavLink } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar({setUser,setIsLoggedIn}) {
   return (
     <div className="navbar">
-      <NavLink to="/">
-            disciplines
+      <NavLink to="/classes">
+            classes
       </NavLink>
       <br></br>
       <NavLink to="/slots">
-            all slots
+            schedule
       </NavLink>
       <br></br>
-      <NavLink to="/logout">
-            logout
+      {/* <NavLink to="/slots">
+            show up
+      </NavLink>
+      <br></br> */}
+
+      <NavLink to="/">
+            <Logout setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
       </NavLink>
     </div>
   );
