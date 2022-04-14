@@ -18,9 +18,9 @@ export default function NavBar({setUser,setIsLoggedIn}) {
       </NavLink>
       <br></br> */}
 
-      <NavLink to="/">
-            <Logout setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
-      </NavLink>
+     
+      <Logout setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
+
     </div>
   );
 }

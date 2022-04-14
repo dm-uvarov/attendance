@@ -9,14 +9,16 @@ import SlotPage from './components/SlotPage'
 import Signup from './components/Signup'
 import NavBar from './components/NavBar'
 import DisciplinesListPage from './components/DisciplinesListPage'
+
 import AttendancePage from './components/AttendancePage'
 import { connect,useDispatch } from "react-redux";
 import { fetchStudents,fetchDisciplines, fetchAppointments,fetchAttendances,fetchSlots } from './actions/actions'
-
+import {useSelector} from "react-redux"
 import {BrowserRouter,
         Routes,
        Route,
        useNavigate } from 'react-router-dom';
+import DisciplineCard from './components/DisciplineCard';
 
 const mapStateToProps = (state) => {
         return {
@@ -43,7 +45,9 @@ function App(props) {
   const [user,setUser] = useState([])
   const [isloggedIn, setIsLoggedIn] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [shosenDiscipline, setShosenDiscipline] = useState('')
+
+
 
   useEffect(() => {
     fetch('/me')
@@ -69,7 +73,7 @@ function App(props) {
   // };
 
 
-/*
+
   useEffect(() => {
     fetch(`/students`)
       .then((r) => r.json())
@@ -107,7 +111,7 @@ function App(props) {
         dispatch(fetchAppointments(appointments));
       });
   }, []);
-*/
+
 
 
 
@@ -119,16 +123,18 @@ function App(props) {
         {(isloggedIn ) ? (<NavBar setUser={setUser} setIsLoggedIn={setIsLoggedIn} />):(
           <Login setUser= {setUser} setIsLoggedIn = {setIsLoggedIn} />
         )}
- 
-   
-       </div>
+      </div>
 
-       {/* <NavBar setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
-       <Login setUser= {setUser} setIsLoggedIn = {setIsLoggedIn} /> */}
+      <Routes>  
+        <Route path="/classes" element ={<DisciplinesListPage setShosenDiscipline={setShosenDiscipline} />} />
+
+        <Route path="/classes/:id" element ={<DisciplineCard shosenDiscipline={shosenDiscipline}/>} />
+
+        <Route path="/slots" element ={<SlotPage />} />
+      </Routes>
 
 
     </div>
-
   );
 }
 

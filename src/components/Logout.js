@@ -1,4 +1,5 @@
 import React,{useState ,useEffect } from 'react'
+import {NavLink} from 'react-router-dom'
 
 
 export default function Logout({setUser,setIsLoggedIn}) {
@@ -13,6 +14,8 @@ export default function Logout({setUser,setIsLoggedIn}) {
 
 
   return (
-        <label onClick={ handleLogout }>Logout</label>
+    <NavLink to="/" onClick={ handleLogout }>
+     Logout
+    </NavLink>
   )
 }
