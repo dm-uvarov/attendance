@@ -5,6 +5,17 @@ export default function SlotPage(){
 
     const studentsArray = useSelector(state=>state.students)
     console.log(studentsArray)
+    const disciplinesArray = useSelector(state=>state.disciplines)
+    console.log(disciplinesArray)
+    const slotsArray = useSelector(state=>state.slots)
+    console.log(slotsArray)
+    const attendancesArray = useSelector(state=>state.attendances)
+    console.log(attendancesArray)
+    const appointmentsArray = useSelector(state=>state.appointments)
+    console.log(appointmentsArray)
+
+
+
     return(
         <div>list scheduled appoitments here-
             
