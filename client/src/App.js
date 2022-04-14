@@ -7,21 +7,22 @@ import {
   Route,
 } from "react-router-dom";
 import Home from "./components/Home"
+import Logout from "./components/Logout"
 
 
 function App() {
 
 
-  const [posts, setStudents] = useState([])
+  const [students, setStudents] = useState([])
   const [user,setUser] = useState(null)
   const [isLoggedIn,setIsLoggedIn] = useState(false)
-  const [likes,setLikes] = useState(0)
+
  
-  // useEffect(() => {
-  //   fetch('/logout',{method:"DELETE"}).then().then(console.log)
-  //   setUser(null)
-  //   setIsLoggedIn(false)
-  // }, [])
+  useEffect(() => {
+    fetch('/logout',{method:"DELETE"}).then().then(console.log)
+    setUser(null)
+    setIsLoggedIn(false)
+  }, [])
 
 
   useEffect(() => {
@@ -100,11 +101,12 @@ function App() {
         <Switch>
 
           
-          <Route path="/">
-            <Home user ={user} setUser={setUser} posts={posts} setIsLoggedIn={setIsLoggedIn}/>
+          <Route path="/home">
+            <div>welcome</div>
+            <Logout setUser ={setUser} />
           </Route>
 
-        
+
 
           
 
