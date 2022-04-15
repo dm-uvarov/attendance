@@ -60,6 +60,14 @@ const slotsReducer = (state = [], action) => {
     switch (action.type) {
       case "FETCH/ATTENDANCES":
         return [...action.payload];
+      case "UPDATE/attendance":
+        return state.map((attendance)=>{
+          if (attendance.id !== action.payload.id){
+            return attendance;
+
+          }
+          return action.payload;
+        });
       default:
         return state;
     }

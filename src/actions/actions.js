@@ -16,7 +16,12 @@ function fetchDisciplines(disciplines) {
 
 }
 
-
+function updateAttendance(attendance) {
+    return {
+      type: "UPDATE/attendance",
+      payload: attendance,
+    };
+  }
 
 
 
@@ -77,5 +82,6 @@ function loginUser(user) {
     fetchDisciplines,
     fetchStudents,
     choosenDisciplineId,
-    choosenSlotId
+    choosenSlotId,
+    updateAttendance
 };
