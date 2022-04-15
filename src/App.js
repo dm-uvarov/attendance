@@ -19,6 +19,7 @@ import {BrowserRouter,
        Route,
        useNavigate } from 'react-router-dom';
 import DisciplineCard from './components/DisciplineCard';
+import SlotCard from './components/SlotCard';
 
 const mapStateToProps = (state) => {
         return {
@@ -131,6 +132,8 @@ function App(props) {
         <Route path="/classes/:id" element ={<DisciplineCard />} />
 
         <Route path="/slots" element ={<SlotPage />} />
+
+        <Route path="/slots/:id" element ={<SlotCard />} />
       </Routes>
 
 
