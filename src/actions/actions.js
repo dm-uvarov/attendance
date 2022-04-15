@@ -16,6 +16,10 @@ function fetchDisciplines(disciplines) {
 
 }
 
+
+
+
+
 function fetchSlots(slots) {
     return {
         type: "FETCH/SLOTS",
@@ -43,6 +47,21 @@ function fetchAttendances(attendances) {
 
 }
 
+function choosenDisciplineId(disciplineId){
+    return{
+        type: "change/disciplineid",
+        payload: disciplineId
+    }
+} 
+
+function choosenSlotId(slotId){
+    return{
+        type: "change/slotId",
+        payload: slotId
+    }
+} 
+
+
 function loginUser(user) {
     return {
       type: "LOGIN/USER",
@@ -51,4 +70,12 @@ function loginUser(user) {
   }
 
 
-  export { fetchSlots, fetchAppointments, fetchAttendances, loginUser,fetchDisciplines,fetchStudents };
+  export { fetchSlots, 
+    fetchAppointments, 
+    fetchAttendances, 
+    loginUser,
+    fetchDisciplines,
+    fetchStudents,
+    choosenDisciplineId,
+    choosenSlotId
+};

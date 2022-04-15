@@ -9,6 +9,26 @@ const disciplinesReducer = (state = [], action) => {
   }
 };
 
+const disciplineIdReducer = (state = [], action) => {
+  switch (action.type) {
+    case "change/disciplineid":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const slotIdReducer = (state = [], action) => {
+  switch (action.type) {
+    case "change/slotId":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+
+
 const studentsReducer = (state = [], action) => {
   switch (action.type) {
     case "FETCH/STUDENTS":
@@ -62,6 +82,8 @@ const rootReducer = combineReducers({
   appointments:     appointmentsReducer,
   attendances:      attendancesReducer,
   user:             userReducer,
+  disciplineID:       disciplineIdReducer,
+  slotID:           slotIdReducer
 });
 
 export default rootReducer;

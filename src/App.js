@@ -45,7 +45,7 @@ function App(props) {
   const [user,setUser] = useState([])
   const [isloggedIn, setIsLoggedIn] = useState(false);
   const dispatch = useDispatch();
-  const [shosenDiscipline, setShosenDiscipline] = useState('')
+  // const [shosenDiscipline, setShosenDiscipline] = useState('')
 
 
 
@@ -126,9 +126,9 @@ function App(props) {
       </div>
 
       <Routes>  
-        <Route path="/classes" element ={<DisciplinesListPage setShosenDiscipline={setShosenDiscipline} />} />
+        <Route path="/classes" element ={<DisciplinesListPage />} />
 
-        <Route path="/classes/:id" element ={<DisciplineCard shosenDiscipline={shosenDiscipline}/>} />
+        <Route path="/classes/:id" element ={<DisciplineCard />} />
 
         <Route path="/slots" element ={<SlotPage />} />
       </Routes>
