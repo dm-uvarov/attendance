@@ -37,9 +37,8 @@ p "users"
 
 5.times { 
     name = Faker::Science.science(:basic)
-    pic = Faker::LoremFlickr.image
     id = User.all.sample.id
-    Discipline.create(name: name,pic: pic,user_id: id )
+    Discipline.create(name: name,pic: Faker::LoremFlickr.image,user_id: id )
 }
 p "discpilpine"
 
