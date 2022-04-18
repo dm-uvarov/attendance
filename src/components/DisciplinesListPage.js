@@ -1,37 +1,40 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {useSelector,useDispatch} from "react-redux"
 import {useNavigate} from "react-router-dom"
-import {choosenDisciplineId} from '../actions/actions'
+// import {choosenDisciplineId} from '../actions/actions'
+import {fetchDisc,unsetDisc,setDisc} from "../features/discSlice"
 
 
 
 
 
 export default function DisciplinesList(){
-
+    const disciplinesArray = useSelector(state=>state.disciplines.entities);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const d_id_state = useSelector(state=>state.disciplineID)
 
-    function changePage(idRouteNumber){
-      
-        dispatch(choosenDisciplineId(idRouteNumber))
-        console.log("dispatched discipline id: ", d_id_state)
-        console.log(idRouteNumber)
-        navigate(`/classes/${idRouteNumber}`)
-        // setShosenDiscipline(idRouteNumber)
+
+    const sDisc = useSelector(state=>state.disciplines.selectedDisc)
+
+    function changePage(disc){
+        dispatch(setDisc(disc))
+        // console.log("dispatched discipline id: ", sDisc.id)
+        navigate(`/classes/${disc.id}`)
+        
+        // console.log(c.id)
+        
     }
 
 
 
-    const disciplinesArray = useSelector(state=>state.disciplines)
-    console.log(disciplinesArray)
+    
+    // console.log(disciplinesArray)
 
 
 
     const showClasses = disciplinesArray.map( (c)=> {
         return(
-        <div key= {c.id} onClick={(e)=>changePage(c.id)}>
+        <div key= {c.id} onClick={(e)=>changePage(c)}>
             <p>{c.name} </p> 
             <img src={c.pic} />
             

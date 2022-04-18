@@ -10,13 +10,15 @@ export default function SlotCard(){
     const [is_att , setIsAtt] = useState(false);
     const [att,setAtt] = useState([]);
 
-    const ApArray = useSelector(state=>state.appointments)
-    const slotId = useSelector(state=>state.slotID)
+
+
+    const ApArray = useSelector(state=>state.appointments.entinties)
+    const selSlot = useSelector(state=>state.slots.selectedSlot)
    
     const dispatch = useDispatch();
     
 
-    const aApnts = ApArray.filter(a=> {return a.slot_id === slotId}  )
+    const aApnts = ApArray.filter(a=> {return a.slot_id === selSlot.id}  )
     console.log("filtered",aApnts)
 
     const updateAttendanceClick = (attId,is_at,apId,e) =>{

@@ -12,7 +12,7 @@ import DisciplinesListPage from './components/DisciplinesListPage'
 
 import AttendancePage from './components/AttendancePage'
 import { connect,useDispatch } from "react-redux";
-import { fetchStudents,fetchDisciplines, fetchAppointments,fetchAttendances,fetchSlots } from './actions/actions'
+// import { fetchStudents,fetchDisciplines, fetchAppointments,fetchAttendances,fetchSlots } from './actions/actions'
 import {useSelector} from "react-redux"
 import {BrowserRouter,
         Routes,
@@ -20,28 +20,33 @@ import {BrowserRouter,
        useNavigate } from 'react-router-dom';
 import DisciplineCard from './components/DisciplineCard';
 import SlotCard from './components/SlotCard';
+import {fetchSlots} from './features/slotsSlice'
+import {fetchDisc} from './features/discSlice'
+import {fetchStud} from './features/studSlice'
+import {fetchAppo} from './features/appoSlice'
+import {fetchAtte} from './features/atteSlice'
 
-const mapStateToProps = (state) => {
-        return {
-          students: state.students,
-          disciplines: state.disciplines,
-          appointments: state.appointments,
-          attendances: state.attendances,
-          slots: state.slots
-        };
-};
+// const mapStateToProps = (state) => {
+//         return {
+//           students: state.students,
+//           disciplines: state.disciplines,
+//           appointments: state.appointments,
+//           attendances: state.attendances,
+//           slots: state.slots
+//         };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-        return {
-          fetchStudents: (students) => dispatch(fetchStudents(students)),
-          fetchDisciplines: (disciplines) => dispatch(fetchDisciplines(disciplines)),
-          fetchAppointments: (appointments) => dispatch(fetchAppointments(appointments)),
-          fetchAttendances: (attendances) => dispatch(fetchAttendances(attendances)),
-          fetchSlots: (slots) => dispatch(fetchSlots(slots))
-        };
-};
+// const mapDispatchToProps = (dispatch) => {
+//         return {
+//           fetchStudents: (students) => dispatch(fetchStudents(students)),
+//           fetchDisciplines: (disciplines) => dispatch(fetchDisciplines(disciplines)),
+//           fetchAppointments: (appointments) => dispatch(fetchAppointments(appointments)),
+//           fetchAttendances: (attendances) => dispatch(fetchAttendances(attendances)),
+//           fetchSlots: (slots) => dispatch(fetchSlots(slots))
+//         };
+// };
 
-function App(props) {
+function App() {
 
   const [user,setUser] = useState([])
   const [isloggedIn, setIsLoggedIn] = useState(false);
@@ -64,55 +69,13 @@ function App(props) {
 
   console.log("user",user)
 
-  // const handleLogout = () => {
-  //   fetch("/logout", {
-  //     method: "DELETE",
-  //   });
-  //     setUser([]);
-  //     setIsLoggedIn(false);
-  //     // navigate("/");
-  // };
-
-
-
   useEffect(() => {
-    fetch(`/students`)
-      .then((r) => r.json())
-      .then((students) => {
-        dispatch(fetchStudents(students));
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch(`/attendances`)
-      .then((r) => r.json())
-      .then((attendances) => {
-        dispatch(fetchAttendances(attendances));
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch(`/slots`)
-      .then((r) => r.json())
-      .then((slots) => {
-        dispatch(fetchSlots(slots));
-      });
-  }, []);
-  useEffect(() => {
-    fetch(`/disciplines`)
-      .then((r) => r.json())
-      .then((disciplines) => {
-        dispatch(fetchDisciplines(disciplines));
-      });
-  }, []);
-  useEffect(() => {
-    fetch(`/appointments`)
-      .then((r) => r.json())
-      .then((appointments) => {
-        dispatch(fetchAppointments(appointments));
-      });
-  }, []);
-
+    dispatch(fetchSlots());
+    dispatch(fetchDisc());
+    dispatch(fetchStud());
+    dispatch(fetchAppo());
+    dispatch(fetchAtte());
+  }, [dispatch]);
 
 
 
@@ -141,5 +104,6 @@ function App(props) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
 

@@ -2,6 +2,8 @@ import React,{useEffect} from "react";
 import {useSelector,useDispatch} from "react-redux"
 import {useNavigate} from "react-router-dom"
 import {choosenSlotId} from '../actions/actions'
+import {fetchSlots,unsetSlot,setSlot} from "../features/slotsSlice"
+
 
 // import {useNavigate} from "react-router-dom"
 
@@ -11,32 +13,45 @@ export default function DisciplineCard(){
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const slotsArray = useSelector(state=>state.slots)
-    const disciplineId = useSelector(state=>state.disciplineID)
-    const s_id_state = useSelector(state=>state.slotID)
-    console.log(slotsArray)
-    console.log(s_id_state)
-    let event = ""
+    // load state from state store
+    const slotsArray = useSelector(state=>state.slots.entities)
+    const sDisc = useSelector(state=>state.disciplines.selectedDisc)
+    //  console.log("dispatched discipline id: ", sDisc.id)
 
-    function changeSlotPage(e,idRouteNumber){
-        console.log("id routenimber",idRouteNumber)
-        dispatch(choosenSlotId(idRouteNumber))
-        console.log("dispatched slot id: ", s_id_state)
-        event = e
-        navigate(`/slots/${idRouteNumber}`)
+
+    
+
+    // 
+    // const disciplineId = useSelector(state=>state.disciplineID)
+
+
+    //
+    const sSlot = useSelector(state=>state.slots.selectedSlot)
+
+
+
+    // console.log(slotsArray)
+    // console.log(sSlot)
+    // let event = ""
+
+    function changeSlotPage(selSlot){
+        // console.log("id routenimber",selSlot.id)
+        dispatch(setSlot(selSlot))
+        // console.log("dispatched slot id: ", sSlot)
+        navigate(`/slots/${selSlot.id}`)
         // setShosenDiscipline(idRouteNumber)
     }
 
-    useEffect(() => { 
-        if (event){
-            navigate(`/slots/${s_id_state}`)
-        } 
-    })
+    // useEffect(() => { 
+    //     if (event){
+    //         navigate(`/slots/${sSlot.id}`)
+    //     } 
+    // })
 
-    const aSlots = slotsArray.filter(s=> {return s.discipline.id === disciplineId}  ).map(s=>{
+    const aSlots = slotsArray.filter(s=> {return s.discipline_id === sDisc.id}  ).map(s=>{
         return (
-            <div key= {s.id} onClick = {(e)=>{changeSlotPage(e,s.id)}} > 
-                <p>{s.discipline.name } </p>
+            <div key= {s.id} onClick = {()=>changeSlotPage(s)} > 
+                <p>{sDisc.name } </p>
              <h5>{s.date } </h5>
              <p>starts at: {s.start } </p>
              <p>  ends at: {s.finish } </p>
@@ -47,7 +62,7 @@ export default function DisciplineCard(){
 
 
 
-    console.log("discipline", aSlots)
+    // console.log("discipline", aSlots)
 
     return (
         <div> 
