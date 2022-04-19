@@ -5,7 +5,7 @@ import studReducer          from "../features/studSlice"
 import slotsReducer         from "../features/slotsSlice"
 import appoReducer          from "../features/appoSlice"
 import atteReducer          from "../features/atteSlice"
-// import userReducer          from "./features/userSlice"
+import userReducer          from "../features/userSlice"
 
 const store = configureStore({
   reducer: {
@@ -22,7 +22,7 @@ const store = configureStore({
     // sAppointment:     appointmentReducer,
     // sAttendance:      attendanceReducer,
     // //auth
-    // user:             userReducer,
+    user:             userReducer,
   }
 });
 

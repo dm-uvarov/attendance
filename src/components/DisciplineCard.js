@@ -1,7 +1,7 @@
 import React,{useEffect} from "react";
 import {useSelector,useDispatch} from "react-redux"
 import {useNavigate} from "react-router-dom"
-import {choosenSlotId} from '../actions/actions'
+// import {choosenSlotId} from '../actions/actions'
 import {fetchSlots,unsetSlot,setSlot} from "../features/slotsSlice"
 
 
@@ -51,8 +51,8 @@ export default function DisciplineCard(){
     const aSlots = slotsArray.filter(s=> {return s.discipline_id === sDisc.id}  ).map(s=>{
         return (
             <div key= {s.id} onClick = {()=>changeSlotPage(s)} > 
-                <p>{sDisc.name } </p>
-             <h5>{s.date } </h5>
+                <h4>{sDisc.name } </h4>
+             <h5> {s.date } </h5>
              <p>starts at: {s.start } </p>
              <p>  ends at: {s.finish } </p>
             </div>

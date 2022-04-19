@@ -1,14 +1,23 @@
 import React,{useState ,useEffect } from 'react'
-
-
+import {useNavigate} from 'react-router-dom'
+import {useDispatch,useSelector} from 'react-redux'
+import {loginFetchUser} from "../features/userSlice"
+import {fetchSlots} from '../features/slotsSlice'
+import {fetchDisc} from '../features/discSlice'
+import {fetchStud} from '../features/studSlice'
+import {fetchAppo} from '../features/appoSlice'
+import {fetchAtte} from '../features/atteSlice'
 
 function Login({setUser, setIsLoggedIn}){
 
 
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
+    const dispatch = useDispatch();
 
 
+
+    let navigate = useNavigate()
     const onSubmit = (e) => {
         e.preventDefault()
         const userLogin = {
@@ -26,14 +35,29 @@ function Login({setUser, setIsLoggedIn}){
             if(r.ok){
                 r.json().then(setUser)
                 setIsLoggedIn(true)
-                // navigate("/");
+
+                dispatch(fetchSlots());
+                dispatch(fetchDisc());
+                dispatch(fetchStud());
+                dispatch(fetchAppo());
+                dispatch(fetchAtte());
+
+
+
+
+
+
+                navigate("/home");
             }else{
                 r.json().then( (d) => {
                     console.log("userlogin",userLogin)
                     alert("Invalid Username or Password")})
             }
         })
-        // .then(d => console.log(d))
+        .then(d => console.log(d))
+
+        // dispatch(loginFetchUser(userLogin));
+        // console.log()
     }
 
     return (

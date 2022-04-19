@@ -1,12 +1,12 @@
 import React,{useEffect} from "react";
 import {useSelector,useDispatch} from "react-redux"
 import {useNavigate} from "react-router-dom"
-import setSlot from "../features/slotsSlice"
-
+import {setSlot} from "../features/slotsSlice"
+import {setDisc} from "../features/discSlice"
 export default function SlotPage(){
 
     
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const slotsArray = useSelector(state=>state.slots.entities)
     const discArray = useSelector(state=>state.disciplines.entities)
@@ -31,24 +31,37 @@ export default function SlotPage(){
     // })
 
     // add logic for displaing name of class here
+    const sSlot = useSelector(state=>state.slots.selectedSlot)
+
+    function changeSlotPage(selSlot,selectDisc){
+        // console.log("id routenimber",selSlot.id)
+        console.log("slot",selSlot)
+        dispatch(setDisc(selectDisc))
+        dispatch(setSlot(selSlot))
+        // console.log("dispatched slot id: ", sSlot)
+        navigate(`/slots/${selSlot.id}`)
+        // setShosenDiscipline(idRouteNumber)
+        console.log(selSlot)
+    }
 
     const disciplineNameofSlot = (slot) =>{
         const fDisc = discArray.find((disc)=> {return disc.id === slot.discipline_id})
-        return fDisc.name
+        return fDisc
     }
 
     const showSlots = slotsArray.map( s=>{
         return(
-            <div key={s.id} /*onClick = {changeSlotPage(s.id)}*/> 
-                <h5>{disciplineNameofSlot(s)} </h5>
-                <p>{s.date} </p>
-                <p>{s.start} </p>
+            <div key={s.id} onClick = {(e)=>changeSlotPage(s,disciplineNameofSlot(s))}/*onClick = {changeSlotPage(s.id)}*/> 
+                <h4>{disciplineNameofSlot(s).name} </h4>
+                <h5>{s.date } </h5>
+                <p>starts at: {s.start } </p>
+                <p>  ends at: {s.finish } </p>
             </div>
         )
     })
 
     return(
-        <div>list scheduled appoitments here-
+        <div>
             
             {showSlots}
              

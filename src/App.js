@@ -9,10 +9,11 @@ import SlotPage from './components/SlotPage'
 import Signup from './components/Signup'
 import NavBar from './components/NavBar'
 import DisciplinesListPage from './components/DisciplinesListPage'
+import HomePage from './components/HomePage'
 
 import AttendancePage from './components/AttendancePage'
 import { connect,useDispatch } from "react-redux";
-// import { fetchStudents,fetchDisciplines, fetchAppointments,fetchAttendances,fetchSlots } from './actions/actions'
+
 import {useSelector} from "react-redux"
 import {BrowserRouter,
         Routes,
@@ -26,25 +27,6 @@ import {fetchStud} from './features/studSlice'
 import {fetchAppo} from './features/appoSlice'
 import {fetchAtte} from './features/atteSlice'
 
-// const mapStateToProps = (state) => {
-//         return {
-//           students: state.students,
-//           disciplines: state.disciplines,
-//           appointments: state.appointments,
-//           attendances: state.attendances,
-//           slots: state.slots
-//         };
-// };
-
-// const mapDispatchToProps = (dispatch) => {
-//         return {
-//           fetchStudents: (students) => dispatch(fetchStudents(students)),
-//           fetchDisciplines: (disciplines) => dispatch(fetchDisciplines(disciplines)),
-//           fetchAppointments: (appointments) => dispatch(fetchAppointments(appointments)),
-//           fetchAttendances: (attendances) => dispatch(fetchAttendances(attendances)),
-//           fetchSlots: (slots) => dispatch(fetchSlots(slots))
-//         };
-// };
 
 function App() {
 
@@ -69,27 +51,28 @@ function App() {
 
   console.log("user",user)
 
-  useEffect(() => {
-    dispatch(fetchSlots());
-    dispatch(fetchDisc());
-    dispatch(fetchStud());
-    dispatch(fetchAppo());
-    dispatch(fetchAtte());
-  }, [dispatch]);
-
-
+  // useEffect(()=> {
+  // dispatch(fetchSlots());
+  // dispatch(fetchDisc());
+  // dispatch(fetchStud());
+  // dispatch(fetchAppo());
+  // dispatch(fetchAtte());
+  // },[dispatch])
 
   return (
    
     <div className="App">
-       
-      <div> 
-        {(isloggedIn ) ? (<NavBar setUser={setUser} setIsLoggedIn={setIsLoggedIn} />):(
+       {/* <Login setUser= {setUser} setIsLoggedIn = {setIsLoggedIn} /> 
+       */}
+      { <div> 
+        { isloggedIn  ? <NavBar setUser={setUser} setIsLoggedIn={setIsLoggedIn} /> :
           <Login setUser= {setUser} setIsLoggedIn = {setIsLoggedIn} />
-        )}
-      </div>
+        }
+      </div> }
 
       <Routes>  
+        <Route path="/home" element={<HomePage user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn}/>} />
+
         <Route path="/classes" element ={<DisciplinesListPage />} />
 
         <Route path="/classes/:id" element ={<DisciplineCard />} />
@@ -104,6 +87,6 @@ function App() {
   );
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+
 export default App;
 

@@ -11,6 +11,7 @@ const slotsSlice = createSlice({
   name: 'slots',
   initialState: {
     entities: [],
+    // nested
     selectedSlot: {},  
     status: "idle",
   },
