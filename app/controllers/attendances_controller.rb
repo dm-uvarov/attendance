@@ -10,11 +10,17 @@ class AttendancesController < ApplicationController
     end
 
     def update
-        attendance = Attendance.find_by!(id: params[:id])
-        attendance.update(is_attended: params[:is_attended])
-        
+        attendance = Attendance.find(params[:id])
+        # byebug
+        attendance.update!(attendance_params)
         render json: attendance,status: :ok
         
+    end
+
+    private
+
+    def attendance_params 
+        params.permit(:id, :is_attended)
     end
 
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :attendances
+  # resources :attendances
   resources :appointments
   resources :slots
   # Routing logic: fallback requests for React Router.
