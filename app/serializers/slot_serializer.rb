@@ -14,6 +14,6 @@ class SlotSerializer < ActiveModel::Serializer
   end
 
   def finish 
-    object.s_time.strftime("%H:%M")
+    object.e_time.strftime("%H:%M")
   end
 end
