@@ -7,6 +7,9 @@ import {fetchDisc} from '../features/discSlice'
 import {fetchStud} from '../features/studSlice'
 import {fetchAppo} from '../features/appoSlice'
 import {fetchAtte} from '../features/atteSlice'
+// import "antd/dist/antd.css";
+// import { Form, Input, Button} from "antd";
+// import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 function Login({setUser, setIsLoggedIn}){
 
@@ -33,7 +36,8 @@ function Login({setUser, setIsLoggedIn}){
         
         .then(r=>{
             if(r.ok){
-                r.json().then(setUser)
+                r.json().then(data=> {setUser(data)}
+                )
                 setIsLoggedIn(true)
 
                 dispatch(fetchSlots());
@@ -41,7 +45,6 @@ function Login({setUser, setIsLoggedIn}){
                 dispatch(fetchStud());
                 dispatch(fetchAppo());
                 dispatch(fetchAtte());
-
 
 
 
@@ -63,26 +66,24 @@ function Login({setUser, setIsLoggedIn}){
     return (
 
         <div className="login-form">
-            <h1>Login</h1> 
+           
             <form onSubmit={onSubmit}>
                         
                 <div className="form-outline mb-4">
+                    <span>👤</span>
                     <input onChange={(e) => setUsername(e.target.value)} type="text" id="login-username-input" className="form-control" placeholder="Username" />
-                    <label className="form-label" htmlFor="login-username-input">Username</label>
                 </div>
 
                         
                 <div className="form-outline mb-4">
+                    <span> 🔐</span>
                     <input onChange={(e) => setPassword(e.target.value)} type="password" id="login-pasword-input" className="form-control" placeholder="Password" />
-                    <label className="form-label" htmlFor="login-pasword-input">Password</label>
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block mb-4">Login</button>
             </form>
 
-            
-        
-
+           
          </div>
 
 
@@ -92,3 +93,13 @@ function Login({setUser, setIsLoggedIn}){
 
 
 export default Login
+
+
+
+
+
+
+
+
+
+

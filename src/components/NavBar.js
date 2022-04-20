@@ -6,13 +6,13 @@ export default function NavBar({setUser,setIsLoggedIn}) {
   return (
     <div className="navbar">
       <NavLink to="/classes">
-            classes
+            Classes
       </NavLink>
-      <br></br>
+      
       <NavLink to="/slots">
-            schedule
+            Schedule
       </NavLink>
-      <br></br>
+     
       {/* <NavLink to="/slots">
             show up
       </NavLink>

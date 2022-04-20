@@ -3,6 +3,8 @@ import {useSelector,useDispatch} from "react-redux"
 import {useNavigate} from "react-router-dom"
 import {setSlot} from "../features/slotsSlice"
 import {setDisc} from "../features/discSlice"
+// import { Card } from "semantic-ui-react";
+
 export default function SlotPage(){
 
     
@@ -10,25 +12,6 @@ export default function SlotPage(){
     const dispatch = useDispatch();
     const slotsArray = useSelector(state=>state.slots.entities)
     const discArray = useSelector(state=>state.disciplines.entities)
-    // console.log(slotsArray)
-
-    // function changeSlotPage(e,idRouteNumber){
-    //     console.log("id routenimber",idRouteNumber)
-    //     dispatch(choosenSlotId(idRouteNumber))
-    //     console.log("dispatched slot id: ", s_id_state)
-    //     event = e
-    //     navigate(`/slots/${idRouteNumber}`)
-    //     // setShosenDiscipline(idRouteNumber)
-    // }
-
-    // useEffect(() => { 
-        
-    //     if (event){
-    //         navigate(`/slots/${s_id_state}`)
-    //     } else if(s_id_state){
-    //         navigate(`/slots`)
-    //     }
-    // })
 
     // add logic for displaing name of class here
     const sSlot = useSelector(state=>state.slots.selectedSlot)
@@ -51,7 +34,7 @@ export default function SlotPage(){
 
     const showSlots = slotsArray.map( s=>{
         return(
-            <div key={s.id} onClick = {(e)=>changeSlotPage(s,disciplineNameofSlot(s))}/*onClick = {changeSlotPage(s.id)}*/> 
+            <div className="card" key={s.id} onClick = {(e)=>changeSlotPage(s,disciplineNameofSlot(s))}/*onClick = {changeSlotPage(s.id)}*/> 
                 <h4>{disciplineNameofSlot(s).name} </h4>
                 <h5>{s.date } </h5>
                 <p>starts at: {s.start } </p>
@@ -61,7 +44,7 @@ export default function SlotPage(){
     })
 
     return(
-        <div>
+        <div className="cards"> 
             
             {showSlots}
              

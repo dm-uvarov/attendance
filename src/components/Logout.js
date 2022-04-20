@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom'
 import {useNavigate} from "react-router-dom"
 import {unsetSlot} from "../features/slotsSlice"
 import {unsetDisc} from "../features/discSlice"
+import {removeUser} from "../features/userSlice"
 import { useDispatch } from 'react-redux'
 
 export default function Logout({setUser,setIsLoggedIn}) {
@@ -18,9 +19,7 @@ export default function Logout({setUser,setIsLoggedIn}) {
         dispatch(unsetDisc())
         dispatch(unsetSlot())
         navigate(`/`)
-
-
-        
+        dispatch(removeUser())
     }
 
 

@@ -20,9 +20,7 @@ export default function DisciplinesList(){
         dispatch(setDisc(disc))
         // console.log("dispatched discipline id: ", sDisc.id)
         navigate(`/classes/${disc.id}`)
-        
         // console.log(c.id)
-        
     }
 
 
@@ -34,7 +32,7 @@ export default function DisciplinesList(){
 
     const showClasses = disciplinesArray.map( (c)=> {
         return(
-        <div key= {c.id} onClick={(e)=>changePage(c)}>
+        <div className="card" key= {c.id} onClick={(e)=>changePage(c)}>
             <p>{c.name} </p> 
             <img src={c.pic} />
             
@@ -43,7 +41,7 @@ export default function DisciplinesList(){
         )
 
     return(
-        <div>
+        <div className="cards">
             {showClasses}
         </div>
         

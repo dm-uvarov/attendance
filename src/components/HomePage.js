@@ -6,23 +6,14 @@ import fetchSlots from  "../features/slotsSlice"
 import fetchDisc from "../features/discSlice"
 import fetchStud from "../features/studSlice"
 import fetchAppo from "../features/appoSlice"
-import fetchAtte from "../features/atteSlice"
+import {logUser} from "../features/userSlice"
 
 
 export default function HomePage({user}) {
 
   const dispatch = useDispatch();
   console.log(user)
-
-
-  // useEffect(() => {
-  //   dispatch(fetchSlots());
-  //   dispatch(fetchDisc());
-  //   dispatch(fetchStud());
-  //   dispatch(fetchAppo());
-  //   dispatch(fetchAtte());
-  // }, [dispatch]);
-
+  dispatch(logUser(user))
 
   return (
     <div>
@@ -32,7 +23,8 @@ export default function HomePage({user}) {
       </div>
 
       <div> 
-        Greetings, {user.name}!
+        <p>Greetings, {user.name}! </p>
+        <p> Here you could mark attendance of your students with given disciplines</p>
       </div>
       <img src={user.pic} alt={user.name} />
     </div>

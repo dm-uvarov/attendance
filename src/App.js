@@ -26,7 +26,8 @@ import {fetchDisc} from './features/discSlice'
 import {fetchStud} from './features/studSlice'
 import {fetchAppo} from './features/appoSlice'
 import {fetchAtte} from './features/atteSlice'
-
+import {logUser} from './features/userSlice'
+import Header from './components/Header'
 
 function App() {
 
@@ -45,23 +46,17 @@ function App() {
             .then((user) =>{
               setIsLoggedIn(true);
               setUser(user)
+              dispatch(logUser(user))
             })
         }} )
       },[]);
 
   console.log("user",user)
 
-  // useEffect(()=> {
-  // dispatch(fetchSlots());
-  // dispatch(fetchDisc());
-  // dispatch(fetchStud());
-  // dispatch(fetchAppo());
-  // dispatch(fetchAtte());
-  // },[dispatch])
-
   return (
    
     <div className="App">
+      <Header />
        {/* <Login setUser= {setUser} setIsLoggedIn = {setIsLoggedIn} /> 
        */}
       { <div> 

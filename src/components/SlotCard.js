@@ -33,33 +33,6 @@ export default function SlotCard() {
     const filteredAppArray = appointmentsArray.filter(a => { return a.slot_id === selSlot.id })
     console.log("filtered", filteredAppArray)
 
-    const updateAttendanceClick = (attId, is_at, apId, e) => {
-
-        console.log("clicked")
-        // setAtId(attId)
-        // setIsAtt(true)
-        // const updatedAttendaceObj = {
-        //     is_attended: is_att
-        //     }
-        // // at {id , ap_id, is_attended}
-        // console.log("at ID", atId)
-        // console.log("at boolen", is_att)
-        // console.log("from", attId)
-        // console.log("from is_at", is_at)
-
-        // fetch(`/attendances/${atId}`, {
-        //     method: 'PATCH',
-        //     headers: { 'Content-Type': 'application/json'},
-        //     body: JSON.stringify(updatedAttendaceObj)
-        // })
-
-        // .then(r=>r.json())
-        // .then(dispatch(updateAttendance({id: attId, is_attended: !is_at, appointment_id: apId})))
-
-
-
-    }
-
     const allStudents = useSelector(state => state.students.entities)
 
     const relatedAttendances = filteredAppArray.map(ap => {
@@ -82,10 +55,10 @@ export default function SlotCard() {
     console.log(subscribedStudents)
     console.log(relatedAttendances)
 
-    const sttudentsShow = subscribedStudents.map(student => {
+    const studentsShow = subscribedStudents.map(student => {
         return (
-            <div key={uuid()} >
-                <StudentCard student={student}/>
+            <div key={uuid()} className="card" >
+                <StudentCard student={student} />
 
             </div>
 
@@ -95,19 +68,7 @@ export default function SlotCard() {
         )
     })
 
-    //     return (
 
-    //         <div key ={ap.student_id} onClick = {(e)=>{updateAttendanceClick(ap.attendance.id,ap.attendance.is_attended,ap.id,e)}}> 
-    //             <p>  {ap.student.name } {(ap.attendance.is_attended) ? 'was present' : 'not present'} </p>
-
-    //             {/* <p>{s.discipline.name } </p> */}
-    //          {/* <h5>{s.date } </h5>
-    //          <p>starts at: {s.start } </p>
-    //          <p>  ends at: {s.finish } </p> */}
-    //         </div>
-
-    //     )
-    // })
 
     return (
         <div>
@@ -119,18 +80,12 @@ export default function SlotCard() {
                 <br></br>
                 start at: {selSlot.start}
                 <br></br>
-                end at: {selSlot.start}
+                end at: {selSlot.finish}
                 <hr></hr>
                 list of subscribed students
-                {sttudentsShow}
-            {/* <div>
-                students marked as attended:
-                
-            </div>
-            <div> 
-                <button > submit attendance </button>
-
-            </div> */}
+                <div className="cards"> 
+                {studentsShow}
+                </div>
             </div>
 
 
