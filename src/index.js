@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 // import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'
-import "semantic-ui-css/semantic.min.css";
+// import "semantic-ui-css/semantic.min.css";
 // import styled from "styled-components";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

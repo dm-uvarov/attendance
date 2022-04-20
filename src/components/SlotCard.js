@@ -76,13 +76,13 @@ export default function SlotCard() {
                 <p>{filteredDicipline.name}</p>
                 <img src={filteredDicipline.pic} />
                 <br></br>
-                scheduled date: {selSlot.date}
+                <i> <strong>Scheduled date:</strong> {selSlot.date} </i>
                 <br></br>
-                start at: {selSlot.start}
+                Start at: {selSlot.start}
                 <br></br>
-                end at: {selSlot.finish}
+                End at: {selSlot.finish}
                 <hr></hr>
-                list of subscribed students
+                <strong>List of subscribed students</strong>
                 <div className="cards"> 
                 {studentsShow}
                 </div>
