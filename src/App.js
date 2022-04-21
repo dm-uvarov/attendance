@@ -43,13 +43,14 @@ function App() {
       .then((r) => {
         if (r.ok){
           r.json()
-            .then((user) =>{
-              setIsLoggedIn(true);
-              setUser(user)
-              dispatch(logUser(user))
-            })
-        }} )
-      },[]);
+      .then((user) =>{
+        setIsLoggedIn(true);
+        setUser(user)
+        dispatch(logUser(user))
+      })
+      }} )
+    },
+  []);
 
   console.log("user",user)
 
@@ -66,6 +67,7 @@ function App() {
       </div> }
 
       <Routes>  
+        
         <Route path="/home" element={<HomePage user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn}/>} />
 
         <Route path="/classes" element ={<DisciplinesListPage />} />

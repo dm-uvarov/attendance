@@ -23,8 +23,8 @@ export default function HomePage({user}) {
       </div>
 
       <div> 
-        <p>Greetings, {user.name}! </p>
-        <p> Here you could mark attendance of your students with given disciplines</p>
+        
+        <p>Mark student's attendance with given disciplines <b>HERE!</b></p>
       </div>
       <img src={user.pic} alt={user.name} />
     </div>

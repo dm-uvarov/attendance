@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
     // sAppointment:     appointmentReducer,
     // sAttendance:      attendanceReducer,
     //auth
-    // user:             userReducer,
+    user:             userReducer,
   
 });
 

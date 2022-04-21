@@ -5,7 +5,7 @@ export default function Header() {
 
   return (
     <div className="header">
-      <h1>Attendance</h1>
+      <h1>_attendance_</h1>
     </div>
 
   )

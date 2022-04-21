@@ -38,16 +38,19 @@ export default function DisciplineCard(){
             <div className="card" 
                  key= {s.id} 
                  onClick = {()=>changeSlotPage(s)} 
+
                  
-                 style={{ 
-                    backgroundImage: `url(${sDisc.pic})` 
-                  }}>
+                //  style={{ 
+                //     backgroundImage: `url(${sDisc.pic})` 
+                //   }}
+                >
+                {/* <img src= {sDisc.pic} /> */}
                 <h4>{sDisc.name } </h4>
                 <h5> {s.date } </h5>
                 <p>starts at: {s.start } </p>
                 <p>  ends at: {s.finish } </p>
 
-                
+
                 
             </div>
 

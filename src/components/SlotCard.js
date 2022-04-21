@@ -73,7 +73,7 @@ export default function SlotCard() {
     return (
         <div>
             <div>
-                <p>{filteredDicipline.name}</p>
+                <p >{filteredDicipline.name}</p>
                 <img src={filteredDicipline.pic} />
                 <br></br>
                 <i> <strong>Scheduled date:</strong> {selSlot.date} </i>
