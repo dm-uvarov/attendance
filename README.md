@@ -1,0 +1,1 @@
+# current repository contains client and API parts for attendance project
