@@ -22,6 +22,7 @@ export default function NavBar({setUser,setIsLoggedIn}) {
             show up
       </NavLink>
       <br></br> */}
+        
 
      
         <Logout setUser={setUser} setIsLoggedIn={setIsLoggedIn} className="menu-left" />

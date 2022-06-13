@@ -42,13 +42,13 @@ p "users"
 # }
 
 
-p "discpilpine"
-Discipline.create(name: "Human Geography",pic: Faker::LoremFlickr.unique.image ,user_id:  User.all.sample.id )
-Discipline.create(name: "Human Public Speaking",pic: Faker::LoremFlickr.image ,user_id:  User.all.sample.id )
-Discipline.create(name: "Making Friends With Humans",pic: Faker::LoremFlickr.image,user_id:  User.all.sample.id )
-Discipline.create(name: "Structural Art",pic: Faker::LoremFlickr.image,user_id:  User.all.sample.id )
-Discipline.create(name: "Wild Cats",pic: Faker::LoremFlickr.image,user_id:  User.all.sample.id )
-Discipline.create(name: "Architectural Abstraction",pic: Faker::LoremFlickr.image,user_id:  User.all.sample.id )
+p "discipline"
+Discipline.create(name: "Human Geography",pic: Faker::LoremFlickr.image(size: "300x300", search_terms: ['geography'] ) ,user_id:  User.all.sample.id )
+Discipline.create(name: "Human Public Speaking",pic: Faker::LoremFlickr.image(size: "300x300", search_terms: ['speaking'] ) ,user_id:  User.all.sample.id )
+Discipline.create(name: "Making Friends With Humans",pic: Faker::LoremFlickr.image(size: "300x300", search_terms: ['industry'] ),user_id:  User.all.sample.id )
+Discipline.create(name: "Structural Art",pic: Faker::LoremFlickr.image(size: "300x300", search_terms: ['art']) ,user_id:  User.all.sample.id )
+Discipline.create(name: "Wild Cats",pic: Faker::LoremFlickr.image(size: "300x300", search_terms: ['cat']) ,user_id:  User.all.sample.id )
+Discipline.create(name: "Architectural Abstraction",pic: Faker::LoremFlickr.image(size: "300x300", search_terms: ['architecture'] ),user_id:  User.all.sample.id )
 
 
 
