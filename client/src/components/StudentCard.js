@@ -27,16 +27,14 @@ export default function StudentCard({student}){
     dispatch(atteUpdate(c_a))
     dispatch(updateAtteFetch(c_a))
     
-    
-    // dispatch(updateAtte(c_a))
+
   }
-
-
-
-
   return (
-    <div onClick={e=>toggleAttendance(e)}> 
-      <img src={student.pic} alt="student picture" />
+    <div onClick={e=>toggleAttendance(e)} className="container">
+      <div className="image-holder" style={{ backgroundImage: `url('${student.pic}')`, height: '320px'}} > 
+        {/* <div className="three-dot-btn" > ❖ </div>   */}
+        {/* <img src={student.pic} alt="student picture" /> */}
+      </div>
       <p> {student.name}</p>
       presence <span > {attendance.is_attended ? "✅ ":"❌ "}   </span> 
     </div>

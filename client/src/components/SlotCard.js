@@ -6,22 +6,11 @@ import { v4 as uuid } from "uuid";
 import StudentCard from "./StudentCard";
 
 export default function SlotCard() {
-
-    // const [studentId , setStudentId] = useState("");
-    // const [atId , setAtId] = useState("");
-    // const [is_att , setIsAtt] = useState(false);
-    // const [att,setAtt] = useState([]);
-
-
-
     const appointmentsArray = useSelector(state => state.appointments.entities)
     const selSlot = useSelector(state => state.slots.selectedSlot)
     const disciplines = useSelector(state => state.disciplines.entities)
     const attendancesArray = useSelector(state => state.attendances.entities)
 
-    console.log('allatt', attendancesArray)
-    console.log(selSlot)
-    console.log(disciplines)
     const dispatch = useDispatch();
     const filteredDicipline = disciplines.find(disc => {
         return (
@@ -42,7 +31,6 @@ export default function SlotCard() {
                     att.appointment_id === ap.id
                 )
             })
-            //    [app1:=> {att,stu}, app2: {att2,stu2}]
         )
     })
 

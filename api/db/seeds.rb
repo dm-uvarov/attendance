@@ -40,13 +40,15 @@ p "users"
 #     id = User.all.sample.id
 #     Discipline.create(name: name,pic: Faker::LoremFlickr.image(search_terms: ['college']),user_id: id )
 # }
+
+
 p "discpilpine"
-Discipline.create(name: "Human Geography",pic: "https://loremflickr.com/cache/resized/65535_51156211235_9fe4debdcf_300_300_nofilter.jpg",user_id:  User.all.sample.id )
-Discipline.create(name: "Human Public Speaking",pic: "https://loremflickr.com/cache/resized/888_42764257401_988259375d_300_300_nofilter.jpg",user_id:  User.all.sample.id )
-Discipline.create(name: "Making Friends With Humans",pic: "https://loremflickr.com/cache/resized/1478_26187355085_1585a45b82_300_300_nofilter.jpg",user_id:  User.all.sample.id )
-Discipline.create(name: "Structural Art",pic: "https://loremflickr.com/cache/resized/3879_14400470234_f261b91810_300_300_nofilter.jpg",user_id:  User.all.sample.id )
-Discipline.create(name: "Wild Cats",pic: "https://loremflickr.com/cache/resized/65535_51536081755_1f6c4564ce_300_300_nofilter.jpg",user_id:  User.all.sample.id )
-Discipline.create(name: "Architectural Abstraction",pic: "https://loremflickr.com/cache/resized/7303_16313759217_5fea27ae7f_300_300_nofilter.jpg",user_id:  User.all.sample.id )
+Discipline.create(name: "Human Geography",pic: Faker::LoremFlickr.unique.image ,user_id:  User.all.sample.id )
+Discipline.create(name: "Human Public Speaking",pic: Faker::LoremFlickr.image ,user_id:  User.all.sample.id )
+Discipline.create(name: "Making Friends With Humans",pic: Faker::LoremFlickr.image,user_id:  User.all.sample.id )
+Discipline.create(name: "Structural Art",pic: Faker::LoremFlickr.image,user_id:  User.all.sample.id )
+Discipline.create(name: "Wild Cats",pic: Faker::LoremFlickr.image,user_id:  User.all.sample.id )
+Discipline.create(name: "Architectural Abstraction",pic: Faker::LoremFlickr.image,user_id:  User.all.sample.id )
 
 
 

@@ -153,3 +153,12 @@ p {
 .left { 
   float: left;
 }
+
+
+.three-dot-btn {
+  display: block;
+  font-size: x-large;
+  float: right;
+  margin-right: 10px;
+  margin-top: 20px;
+}
