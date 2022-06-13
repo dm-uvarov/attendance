@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useState} from "react";
 import { useSelector, useDispatch } from "react-redux"
 import {atteUpdate,updateAtteFetch } from "../features/atteSlice"
 
@@ -12,6 +12,8 @@ export default function StudentCard({student}){
   const appointment = appointmentsArray.find(ap => ap.student_id === student.id);
   const attendance = attendancesArray.find(at=> at.appointment_id === appointment.id)
 
+
+  const [isShown,setIsShown] = useState(false);
 
   function toggleAttendance(e){
     e.preventDefault();
@@ -30,10 +32,20 @@ export default function StudentCard({student}){
 
   }
   return (
-    <div onClick={e=>toggleAttendance(e)} className="container">
+    <div  onClick={e=>toggleAttendance(e)} 
+          className="container"
+          onMouseEnter={() => {
+            setIsShown(true);
+          }}
+          onMouseLeave={() => {
+            setIsShown(false);
+          }}
+    >
       <div className="image-holder" style={{ backgroundImage: `url('${student.pic}')`, height: '320px'}} > 
-        {/* <div className="three-dot-btn" > ❖ </div>   */}
-        {/* <img src={student.pic} alt="student picture" /> */}
+        { isShown && (<div className="three-dot-btn"                  
+                
+            > ❖ </div> )}
+        
       </div>
       <p> {student.name}</p>
       presence <span > {attendance.is_attended ? "✅ ":"❌ "}   </span> 

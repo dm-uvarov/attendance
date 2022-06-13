@@ -156,9 +156,10 @@ p {
 
 
 .three-dot-btn {
-  display: block;
+
   font-size: x-large;
   float: right;
   margin-right: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
+  cursor: pointer;
 }
